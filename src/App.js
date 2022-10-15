@@ -5,7 +5,7 @@ import Profile from './pages/Profile';
 import Home from './pages/Home';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
-import { AuthContext} from "./context/AuthProvider";
+import {AuthContext} from "./context/AuthContext";
 import './App.css';
 
 function App() {
@@ -17,19 +17,25 @@ function App() {
       <NavBar />
       <div className="content">
         <Switch>
+
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/profile">
-            {isAuth.isAuth ? <Profile /> : <Redirect to="/" />}
-            <Profile />
-          </Route>
+
           <Route exact path="/signin">
             <SignIn />
           </Route>
+
+
           <Route exact path="/signup">
             <SignUp />
           </Route>
+
+          <Route path="/profile">
+            {isAuth ? <Profile /> : <Redirect to="/SignIn" />}
+            {/*<Profile />*/}
+          </Route>
+
         </Switch>
       </div>
     </>

@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {AuthContext} from "../context/AutContext";
+import {AuthContext} from "../context/AuthContext";
 import logo from '../assets/banana-01.png';
 import {useHistory, Link} from 'react-router-dom';
 
@@ -10,7 +10,10 @@ function NavBar() {
    // step 12. Maak de uitlog knop in de navigatie (NavBar.js) functioneel. Als erop wordt geklikt, roep je de logout-functie uit de context aan!
 
     // step 5. Lees de context data keys uit in het component dat deze contextdata gebruikt. kan dus llok een functie zijn zoals login en logout
-    const {isAuth, logout, user} = useContext(AuthContext);
+    // const watisdit = useContext(AuthContext);
+    // console.log(watisdit);
+
+    const {isAuth, userLogoutFunction, user} = useContext(AuthContext);
 
     return (
         <nav>
@@ -28,7 +31,7 @@ function NavBar() {
                     <h5>{user}</h5>
                     <button
                         type="button"
-                        onClick={logout}
+                        onClick={userLogoutFunction}
                     >
                         Log out
                     </button>

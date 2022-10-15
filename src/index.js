@@ -1,5 +1,5 @@
 import React from 'react';
-import {AuthContext } from "./context/AuthContext";
+import MyAuthContextProvider from "./context/AuthContext";
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
@@ -10,11 +10,11 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-       // stap 3. wikkel custom Provider-component om de applicatie en zit in children de applicatie zelf dus App met de tag haken eromheen
-       // stap4b. AuthContext.Provider value={}> igv statische data die je dan ook in index.js kunt declareren
-        <AuthContext>
+        {/*stap 3. wikkel custom Provider-component om de applicatie en zit in children de applicatie zelf dus App met de tag haken eromheen.*/}
+        {/*stap4b. AuthContext.Provider value={}> igv statische data die je dan ook in index.js kunt declareren.*/}
+        <MyAuthContextProvider>
             <App/>
-        </AuthContext>
+        </MyAuthContextProvider>
 
     </Router>
   </React.StrictMode>,
