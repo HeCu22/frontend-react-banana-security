@@ -13,7 +13,7 @@ function NavBar() {
     // const watisdit = useContext(AuthContext);
     // console.log(watisdit);
 
-    const {isAuth, userLogoutFunction, user} = useContext(AuthContext);
+    const {isAuth, userLogoutFunction, email} = useContext(AuthContext);
 
     return (
         <nav>
@@ -28,7 +28,7 @@ function NavBar() {
 
             {isAuth ?
                 <div className="user">
-                    <h5>{user}</h5>
+                    <h5>{email}</h5>
                     <button
                         type="button"
                         onClick={userLogoutFunction}

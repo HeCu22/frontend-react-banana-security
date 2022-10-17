@@ -7,9 +7,9 @@ function SignIn() {
 
     // step 6. uitlezen context met usecontext
     // lees de key login uit de AuthContext;
-    const {userLoginFunction} = useContext(AuthContext)
+    const {userLoginFunction,email} = useContext(AuthContext)
     const [formState, setFormState] = useState({
-        inputUser: "",
+        inputUser: email,
         inputPw: "",
     })
 

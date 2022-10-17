@@ -8,22 +8,27 @@ export const AuthContext = createContext({});
 // stap 3. Zorg ervoor datwe dit om de applicatie kunnen wikkelen door de children property te implementeren
 function MyAuthContextProvider({children}) {
     // stap 7. state aanmaken in het custom Provider-component. Noem deze state-variabele isAuth
-    const [isAuth, toggleIsAuth] = useState({isAuth: false, user: ''});
-    const history = useHistory();
+    const [isAuth, toggleIsAuth] = useState({
+        isAuth: false,
+        user: '',
+        email: ''});
+    const history = useHistory()
+
     // verschillende handelingen met context data kun je mbv gewone functies hier definieren
     // zo blijft de logica in een component en kunnen andere componenten hier gebruik van maken
     // stap 9. Schrijf een inlog-functie in het custom Provider-component
-    function userLogin(usercode) {
-
-        toggleIsAuth({isAuth: true, user: usercode, });
-
+    function userLogin(usercode,emailcode) {
+        toggleIsAuth({isAuth: true, user: usercode, email:usercode});
         history.push('/profile');
+    }
+    function userRegister(usercode, emailcode) {
+        toggleIsAuth({isAuth: true, user: emailcode, email: emailcode});
+        history.push('/signin');
     }
 
     // stap 11. Schrijf een uitlog-functie in het custom Provider-component
     function userLogout() {
-        toggleIsAuth({isAuth: false, user: '',});
-
+        toggleIsAuth({isAuth: false, user: '', email: ''});
         history.push('/')
     }
 
@@ -34,7 +39,9 @@ function MyAuthContextProvider({children}) {
         user: isAuth.user,
         email: isAuth.email,
         userLoginFunction: userLogin,
+        userRegisterFunction: userRegister,
         userLogoutFunction: userLogout,
+
     };
 
     return (

@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {AuthContext} from "../context/AuthContext"
 
 function SignUp() {
-    const {userLoginFunction} = useContext(AuthContext);
+    const {userRegisterFunction} = useContext(AuthContext);
 
     const [formState, setFormState] = useState({
         inputUser: "",
@@ -14,7 +14,7 @@ function SignUp() {
     // stap 10. Als het formulier wordt gesubmit, roep je de login-functie uit de context aan!
     function handleSubmit(e) {
         e.preventDefault();
-        userLoginFunction(formState.inputUser);
+        userRegisterFunction(formState.inputUser, formState.inputEmail);
 
     }
 
@@ -72,6 +72,7 @@ function SignUp() {
 
                 </p>
                 <button
+                    className="form-button"
                     type="submit"
                     disabled={(formState.inputUser.length > 0 && formState.inputPw.length > 0 && formState.inputEmail.length > 0) === false ? true : false}
                 >
